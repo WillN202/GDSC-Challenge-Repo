@@ -15,7 +15,7 @@
 		<div class="group1">
 			<form method="POST">
 				{% if err %}
-				<label>{{ err }}</label>
+				<label>{{ err }} - Hello World</label>
 				{% endif %}
 
 				<input class="normal" type="hidden" name="csrf_token" value="{{ csrf_token() }}">
