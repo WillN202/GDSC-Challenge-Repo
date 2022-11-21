@@ -13,8 +13,6 @@ import barcode
 app = Flask(__name__)
 app.config["UPLOAD_FOLDER"] = "."
 
-#Flag: WhirlIsAMillionBillionTimesTougherThan
-
 csrf = CSRFProtect(app)
 
 login_manager = LoginManager()
@@ -141,11 +139,6 @@ def show_shoppinglist(sl_id):
     return show_shoplist(sl_id)
 
 
-@app.route("/makeshareable", methods=["POST"])
-def make_shareable():
-    return make_share()
-
-
 @app.route("/shoppinglist")
 @app.route("/Shoppinglist")
 def show_shoppinglist_plain():
@@ -204,14 +197,3 @@ def process_list_barc():
 @app.route("/addwithoutapi", methods=["POST"])
 def process_new_product_noapi():
     return barcode.add_item_without_api()
-
-
-@app.errorhandler(400)
-def dealwith_400():
-    return render_template("401.html"), 400
-
-
-@app.errorhandler(401)
-@app.errorhandler(403)
-def dealwith_auth():
-    return render_template("403.html")
